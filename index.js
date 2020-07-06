@@ -1,16 +1,23 @@
+const {
+  pathToFileURL
+} = require('url');
+
 module.exports = () => {
   mdLinks();
 };
 
 function mdLinks() {
   const fs = require('fs');
+  const path = (require('path'))
   fs.readdir(__dirname, (err, files) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("\nCurrent directory filenames:");
+        console.log("Filenames with the .md extension:");
         files.forEach(file => {
-          console.log(file);
+          if (path.extname(file) == ".md") {
+            console.log(file);
+          }
         });
       }
     },
@@ -23,4 +30,4 @@ function mdLinks() {
       }
     }))
 }
-read()
+mdLinks()
