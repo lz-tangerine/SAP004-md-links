@@ -6,8 +6,9 @@ module.exports = () => {
   mdLinks();
 };
 
+const fs = require('fs');
+
 function mdLinks() {
-  const fs = require('fs');
   const path = (require('path'))
   fs.readdir(__dirname, (err, files) => {
       if (err) {
