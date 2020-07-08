@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/lz-tangerine/SAP004-md-links/issues"
   },
-  "homepage": "https://github.com/lz-tangerine/SAP004-md-links#readme"
+  "homepage": "https://github.com/lz-tangerine/SAP004-md-links#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "markdown-it": "^11.0.0"
+  }
 }
