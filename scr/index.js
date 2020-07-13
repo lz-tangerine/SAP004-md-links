@@ -1,6 +1,6 @@
 const fs = require('fs');
-const lerPasta = require('./lerPasta')
-const lerArquivo = require('./lerArquivo');
+const lerPasta = require('../lerPasta')
+const lerArquivo = require('../lerArquivo');
 
 const mdLinks = ([file, option]) => {
   return new Promise((resolve, reject) => {
