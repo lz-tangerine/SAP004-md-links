@@ -1,20 +1,30 @@
 const fs = require('fs');
+const arquivoMd = require('./arquivoMD')
 const MarkdownIt = require("markdown-it");
+const arr = []
 
-
-const lerArquivo = file => {
+const lerArquivo = path => {
   return new Promisse((resolve, reject) => {
-    fs.readFile(file, "utf8", (err, data) => {
+    fs.readFile(path, "utf-8", (err, data) => {
       if (err) {
-        err = 'Arquivo não encontrado';
-        reject(err)
+        err = 'não foi possível ler o arquivo';
+        reject(err);
       } else {
-        const md = new MarkdownIt();
-        const result = md.render(data)
-        resolve(result)
-        console.log(resolve)
+        if (arquivoMd(path) !== 'não é um arquivo md') {
+          const markdownParsed = MarkdownIt.parseInline(data, {});
+          const tokens = markdownParsed[0].children;
+          tokens.forEach(({
+            type,
+            attrs
+          }, index) => {
+            if (type === 'link_open') {
+              arr.push = (`href: ${attrs[0][1]} text: ${tokens[index + 1].content}`)
+            }
+          })
+          resolve(tokens);
+        }
       }
-    })
+    });
   })
 }
 module.exports = lerArquivo;

@@ -5,18 +5,12 @@ const lerArquivo = require('./lerArquivo');
 const lerPasta = folder => {
   return new Promise((resolve, reject) => {
     fs.readdir(folder, 'utf-8', (err, files) => {
-      files.filter(arquivosMd).reduce((file) => {
-        let listaLinks = [];
-        lerArquivo(`${folder}/${file}`).then(mdResult => {
-          if (err) {
-            err = 'Link não encontrado';
-            reject(err)
-          } else {
-            resolve(mdResult)
-          }
-        });
-        return Promise.all(listaLinks)
-      })
+      for (let x = 0; x < files.length; x++) {
+        if (arquivosMd(files[x]) !== 'não é um arquivo md') {
+          return resolve(lerArquivo(`${folder}/${files[x]}`))
+        }
+      }
+      return reject(err)
     });
   });
 };
