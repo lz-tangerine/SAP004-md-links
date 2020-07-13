@@ -4,7 +4,7 @@ const MarkdownIt = require("markdown-it");
 const arr = []
 
 const lerArquivo = path => {
-  return new Promisse((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     fs.readFile(path, "utf-8", (err, data) => {
       if (err) {
         err = 'não foi possível ler o arquivo';
@@ -19,9 +19,9 @@ const lerArquivo = path => {
           }, index) => {
             if (type === 'link_open') {
               arr.push = (`href: ${attrs[0][1]} text: ${tokens[index + 1].content}`)
+              resolve(tokens);
             }
           })
-          resolve(tokens);
         }
       }
     });

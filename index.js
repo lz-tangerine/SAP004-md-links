@@ -1,10 +1,10 @@
 const fs = require('fs');
-const lerPasta = require('../lerPasta')
-const lerArquivo = require('../lerArquivo');
+const lerPasta = require('./scr/lerPasta')
+const lerArquivo = require('./scr/lerArquivo');
 
-const mdLinks = ([file, option]) => {
+const mdLinks = (file, option) => {
   return new Promise((resolve, reject) => {
-    fs.stat(path, (err, stats) => {
+    fs.stat(file, (err, stats) => {
       if (err) reject('Arquivo não encontrado');
       else if (stats.isDirectory()) {
         resolve(lerPasta(file, option));
