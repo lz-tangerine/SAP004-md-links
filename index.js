@@ -1,17 +1,17 @@
-const fs = require('fs');
-const lerPasta = require('./scr/lerPasta')
-const lerArquivo = require('./scr/lerArquivo');
+const fs = require("fs");
+const readFolder = require("./scr/readFolder");
+const readFile = require("./scr/readFile");
 
 const mdLinks = (file, option) => {
   return new Promise((resolve, reject) => {
     fs.stat(file, (err, stats) => {
-      if (err) reject('Arquivo não encontrado');
+      if (err) reject("Arquivo não encontrado");
       else if (stats.isDirectory()) {
-        resolve(lerPasta(file, option));
+        resolve(readFolder(file, option));
       } else if (stats.isFile()) {
-        resolved(lerArquivo(file, option));
+        resolved(readFile(file, option));
       }
-    })
-  })
-}
+    });
+  });
+};
 module.exports = mdLinks;

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const lerArquivo = require("./scr/lerArquivo");
+const readFile = require("./scr/readFile");
 const path = process.argv[2];
 
-lerArquivo(path).then((response) => console.log(response));
+readFile(path).then((response) => console.log(response));
