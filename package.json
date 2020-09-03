@@ -24,5 +24,8 @@
     "fs": "0.0.1-security",
     "jsdom": "^16.2.2",
     "markdown-it": "^11.0.0"
+  },
+  "bin": {
+    "md-links": "cli.js"
   }
 }
